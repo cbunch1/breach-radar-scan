@@ -91,18 +91,8 @@ const BreachChecker: React.FC = () => {
       });
 
       if (error) {
-        console.warn('Supabase function error, falling back to mock data:', error);
-        // Fall back to mock data if the function fails
-        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate delay
-        const mockResult = generateMockResult(email);
-        setResult(mockResult);
-        setIsUsingMockData(true);
-        
-        toast({
-          title: "Scan complete (Demo Mode)",
-          description: "Using demo data. Real API integration available.",
-          variant: "default",
-        });
+        console.error('Supabase function error:', error);
+        throw new Error(`Function call failed: ${error.message}`);
       } else {
         setResult(data);
         setIsUsingMockData(false);
