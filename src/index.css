@@ -2,39 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* DataBreached Design System - Cybersecurity Brand
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
+    /* Brand Colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 214 30% 15%;
+    
+    /* DataBreached Primary - Deep Blue */
+    --primary: 214 76% 14%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 214 76% 18%;
+    
+    /* Secondary - Slate Gray */
+    --secondary: 215 14% 22%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 215 14% 28%;
+    
+    /* Safety Green Accent */
+    --accent: 138 67% 48%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 138 67% 42%;
+    
+    /* Card & Surface */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --card-foreground: 214 30% 15%;
+    --surface: 210 20% 98%;
+    
+    /* Muted & Border */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --success: 138 67% 48%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Focus & Ring */
+    --ring: 214 76% 14%;
 
     --radius: 0.5rem;
 
@@ -55,42 +68,41 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--surface)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--success)) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(var(--primary) / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(var(--primary) / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(var(--primary) / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(var(--primary) / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 0.75rem;
+  }
+
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 214 76% 4%;
+    --foreground: 0 0% 95%;
+    --primary: 214 76% 18%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 14% 16%;
+    --secondary-foreground: 0 0% 95%;
+    --accent: 138 67% 48%;
+    --accent-foreground: 0 0% 100%;
+    --card: 214 76% 6%;
+    --card-foreground: 0 0% 95%;
+    --surface: 214 76% 8%;
+    --muted: 215 14% 12%;
+    --muted-foreground: 215 16% 65%;
+    --border: 215 14% 16%;
+    --input: 215 14% 16%;
+    --ring: 214 76% 18%;
   }
 }
 
@@ -100,6 +112,34 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
   }
+  
+  /* Typography */
+  .font-heading {
+    font-family: "Inter", "Sora", system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  
+  .font-body {
+    font-family: "Inter", "Work Sans", system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Custom shadows using design tokens */
+  .shadow-brand-sm { box-shadow: var(--shadow-sm); }
+  .shadow-brand-md { box-shadow: var(--shadow-md); }
+  .shadow-brand-lg { box-shadow: var(--shadow-lg); }
+  .shadow-brand-xl { box-shadow: var(--shadow-xl); }
+  
+  /* Smooth transitions */
+  .transition-smooth { transition: var(--transition-smooth); }
+  .transition-bounce { transition: var(--transition-bounce); }
+  
+  /* Gradient backgrounds */
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-card { background: var(--gradient-card); }
+  .bg-gradient-accent { background: var(--gradient-accent); }
 }
