@@ -14,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const navigation = [
     { name: 'Home', href: '/' },
+    { name: 'Recent Breaches', href: '/recent-breaches' },
     { name: 'Pricing', href: '/pricing' },
   ];
 
