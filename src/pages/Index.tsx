@@ -143,7 +143,7 @@ const Index = () => {
               </p>
               
               {/* Trust Row */}
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div className="flex flex-wrap gap-4 mb-8 justify-center">
                 {trustSignals.map((signal, index) => (
                   <Badge key={index} variant="outline" className="border-primary-foreground/20 text-primary-foreground bg-primary-foreground/10">
                     {signal}
@@ -151,7 +151,7 @@ const Index = () => {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
                   variant="hero" 
                   size="xl"
