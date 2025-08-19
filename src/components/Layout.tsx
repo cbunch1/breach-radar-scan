@@ -13,11 +13,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
 
   const navigation = [
-    { name: 'Checker', href: '/' },
+    { name: 'Home', href: '/' },
     { name: 'Pricing', href: '/pricing' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'Security', href: '/security' },
-    { name: 'About', href: '/about' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -156,7 +153,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     rel="noopener noreferrer"
                     className="hover:text-foreground transition-smooth flex items-center gap-2"
                   >
-                    📱 Contact on Telegram
+                    Contact on Telegram
                   </a>
                 </li>
                 <li>
@@ -168,6 +165,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   >
                     @databreachedorg
                   </a>
+                </li>
+                <li className="text-xs mt-2">
+                  <span className="text-muted-foreground">
+                    DataBreached.org<br />
+                    175 Greenwich St<br />
+                    New York, NY 10007 USA
+                  </span>
                 </li>
               </ul>
             </div>
