@@ -34,11 +34,24 @@ serve(async (req) => {
 
     console.log(`Checking email: ${email}`);
 
-    // Call Have I Been Pwned API
+    // Get API key from environment
+    const apiKey = Deno.env.get('HIBP_API_KEY');
+    if (!apiKey) {
+      console.error('HIBP API key not configured');
+      return new Response(
+        JSON.stringify({ error: 'API configuration error' }),
+        { 
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    // Call Have I Been Pwned API with proper headers
     const response = await fetch(`https://haveibeenpwned.com/api/v3/breachedaccount/${encodeURIComponent(email)}?truncateResponse=false`, {
       headers: {
         'User-Agent': 'DataBreached-Checker',
-        'hibp-api-key': '' // HIBP API is free for up to 1000 requests per day without key
+        'hibp-api-key': apiKey
       }
     });
 
