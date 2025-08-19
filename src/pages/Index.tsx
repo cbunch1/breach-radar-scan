@@ -118,26 +118,7 @@ const Index = () => {
     }
   ];
 
-  const team = [
-    {
-      name: 'Alex Chen',
-      role: 'Chief Security Officer',
-      credentials: ['CISSP', 'CISM'],
-      bio: 'Former incident response lead with 10+ years in enterprise security',
-    },
-    {
-      name: 'Sarah Rodriguez',
-      role: 'Lead Security Analyst',
-      credentials: ['Security+', 'CEH'],
-      bio: 'Digital forensics expert specializing in breach investigations',
-    },
-    {
-      name: 'Michael Park',
-      role: 'Data Protection Engineer',
-      credentials: ['CISSP', 'GCFA'],
-      bio: 'Privacy-focused engineer with expertise in secure data handling',
-    },
-  ];
+  const team = [];
 
   const trustSignals = [
     "We never store data",
@@ -410,44 +391,6 @@ const Index = () => {
             </Card>
           </div>
 
-          {/* Team */}
-          <div className="text-center mb-12">
-            <h3 className="font-heading text-2xl font-bold text-foreground mb-4">
-              Meet Our Team
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Security specialists with real-world experience in incident response, 
-              digital forensics, and enterprise risk management.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-brand-lg transition-smooth">
-                <CardContent className="pt-8">
-                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-10 h-10 text-primary" />
-                  </div>
-                  <h4 className="font-heading text-xl font-semibold mb-1">
-                    {member.name}
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    {member.role}
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-2 mb-4">
-                    {member.credentials.map((cert) => (
-                      <Badge key={cert} variant="outline" className="text-xs">
-                        {cert}
-                      </Badge>
-                    ))}
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {member.bio}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </section>
 
