@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import databreachedLogo from '@/assets/databreached-logo.png';
+// Use direct upload URL since download failed
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3">
               <img 
-                src={databreachedLogo} 
+                src="/lovable-uploads/59b841fc-13da-4542-b020-b14e2e6e3b13.png" 
                 alt="DataBreached Logo" 
                 className="h-8 w-auto"
               />
@@ -117,7 +117,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
                 <img 
-                  src={databreachedLogo} 
+                  src="/lovable-uploads/59b841fc-13da-4542-b020-b14e2e6e3b13.png" 
                   alt="DataBreached Logo" 
                   className="h-8 w-auto"
                 />
