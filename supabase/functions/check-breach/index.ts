@@ -32,17 +32,23 @@ serve(async (req) => {
       )
     }
 
+    console.log(`Checking email: ${email}`);
+
     // Call Have I Been Pwned API
     const response = await fetch(`https://haveibeenpwned.com/api/v3/breachedaccount/${encodeURIComponent(email)}?truncateResponse=false`, {
       headers: {
-        'User-Agent': 'DataBreached-Checker'
+        'User-Agent': 'DataBreached-Checker',
+        'hibp-api-key': '' // HIBP API is free for up to 1000 requests per day without key
       }
-    })
+    });
+
+    console.log(`HIBP API response status: ${response.status}`);
 
     let breachData: BreachResponse
 
     if (response.status === 404) {
       // No breaches found
+      console.log('No breaches found for email');
       breachData = {
         email,
         found: false,
@@ -51,7 +57,9 @@ serve(async (req) => {
       }
     } else if (response.status === 200) {
       // Breaches found
+      console.log('Breaches found, parsing response');
       const rawBreaches = await response.json()
+      console.log(`Found ${rawBreaches.length} breaches`);
       
       const breaches = rawBreaches.map((breach: any) => ({
         name: breach.Name,
@@ -68,6 +76,7 @@ serve(async (req) => {
       }
     } else if (response.status === 429) {
       // Rate limited
+      console.log('Rate limited by HIBP API');
       return new Response(
         JSON.stringify({ error: 'Rate limited. Please try again later.' }),
         { 
@@ -76,7 +85,10 @@ serve(async (req) => {
         }
       )
     } else {
-      throw new Error(`API returned status ${response.status}`)
+      console.error(`HIBP API returned unexpected status: ${response.status}`);
+      const errorText = await response.text();
+      console.error(`HIBP API error response: ${errorText}`);
+      throw new Error(`API returned status ${response.status}: ${errorText}`)
     }
 
     return new Response(
