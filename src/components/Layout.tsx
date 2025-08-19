@@ -123,8 +123,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 />
               </div>
               <p className="text-muted-foreground text-sm max-w-md">
-                Know what leaked. Lock it down. Professional cybersecurity service 
-                that helps you understand and protect against data breaches.
+                <span className="font-medium text-foreground">Global Defenders Against Cyber Threats</span>
+                <br />
+                <span className="text-xs">Since 2018</span>
               </p>
               <p className="text-xs text-muted-foreground mt-4">
                 © 2018-2025 DataBreached. All rights reserved.
