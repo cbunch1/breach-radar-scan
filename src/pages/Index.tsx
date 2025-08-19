@@ -28,20 +28,20 @@ const Index = () => {
 
   const threatStats = [
     {
-      stat: "$10.93M",
-      description: "Average cost of a data breach in 2023"
+      stat: "$4.88M",
+      description: "Average cost of a data breach in 2024"
     },
     {
-      stat: "83%",
-      description: "Of breaches involve stolen credentials"
+      stat: "95%",
+      description: "Of breaches involve human error"
     },
     {
-      stat: "287 days",
-      description: "Average time to detect a breach"
+      stat: "204 days",
+      description: "Average time to detect a breach in 2024"
     },
     {
-      stat: "22 billion",
-      description: "Records exposed in 2023 alone"
+      stat: "35 billion",
+      description: "Records exposed in 2024"
     }
   ];
 
@@ -199,7 +199,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
-              The Data Breach Crisis: By The Numbers
+              The Data Breach Crisis: 2024 Reality Check
             </h2>
             <p className="text-lg text-muted-foreground">
               Every day, millions lose money to preventable cyber attacks
