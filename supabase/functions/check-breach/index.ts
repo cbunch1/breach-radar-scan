@@ -20,11 +20,28 @@ serve(async (req) => {
   }
 
   try {
+    console.log('Check-breach function called');
+    
     const { email } = await req.json()
+    console.log(`Received email: ${email}`);
 
     if (!email) {
+      console.log('No email provided');
       return new Response(
         JSON.stringify({ error: 'Email is required' }),
+        { 
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      )
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      console.log('Invalid email format');
+      return new Response(
+        JSON.stringify({ error: 'Invalid email format' }),
         { 
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -36,6 +53,8 @@ serve(async (req) => {
 
     // Get API key from environment
     const apiKey = Deno.env.get('HIBP_API_KEY');
+    console.log(`API key available: ${apiKey ? 'Yes' : 'No'}`);
+    
     if (!apiKey) {
       console.error('HIBP API key not configured');
       return new Response(
@@ -48,6 +67,7 @@ serve(async (req) => {
     }
 
     // Call Have I Been Pwned API with proper headers
+    console.log('Making HIBP API call...');
     const response = await fetch(`https://haveibeenpwned.com/api/v3/breachedaccount/${encodeURIComponent(email)}?truncateResponse=false`, {
       headers: {
         'User-Agent': 'DataBreached-Checker',
@@ -104,6 +124,7 @@ serve(async (req) => {
       throw new Error(`API returned status ${response.status}: ${errorText}`)
     }
 
+    console.log('Returning breach data:', breachData);
     return new Response(
       JSON.stringify(breachData),
       { 
@@ -112,10 +133,10 @@ serve(async (req) => {
     )
 
   } catch (error) {
-    console.error('Error checking breaches:', error)
+    console.error('Error in check-breach function:', error)
     
     return new Response(
-      JSON.stringify({ error: 'Failed to check breaches' }),
+      JSON.stringify({ error: `Failed to check breaches: ${error.message}` }),
       { 
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
