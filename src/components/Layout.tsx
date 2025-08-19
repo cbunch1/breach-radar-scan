@@ -128,7 +128,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 that helps you understand and protect against data breaches.
               </p>
               <p className="text-xs text-muted-foreground mt-4">
-                © 2024 DataBreached. All rights reserved.
+                © 2018-2025 DataBreached. All rights reserved.
               </p>
             </div>
 
