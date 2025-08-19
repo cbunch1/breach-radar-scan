@@ -32,10 +32,12 @@ const BreachChecker: React.FC = () => {
   const [result, setResult] = useState<BreachResult | null>(null);
   const [isUsingMockData, setIsUsingMockData] = useState(false);
   const [checklist, setChecklist] = useState<ChecklistItem[]>([
-    { id: 'passwords', title: 'Change passwords for affected accounts', completed: false },
-    { id: 'mfa', title: 'Enable two-factor authentication', completed: false },
-    { id: 'forwarding', title: 'Check email forwarding rules', completed: false },
-    { id: 'monitoring', title: 'Set up ongoing monitoring', completed: false },
+    { id: 'passwords', title: 'Change passwords for affected accounts immediately', completed: false },
+    { id: 'mfa', title: 'Enable two-factor authentication on all important accounts', completed: false },
+    { id: 'forwarding', title: 'Check and remove unauthorized email forwarding rules', completed: false },
+    { id: 'review', title: 'Review recent login activity and connected apps', completed: false },
+    { id: 'unique', title: 'Use unique passwords for each online account', completed: false },
+    { id: 'manager', title: 'Consider using a reputable password manager', completed: false },
   ]);
   const { toast } = useToast();
 
@@ -275,12 +277,12 @@ const BreachChecker: React.FC = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
                       <CheckCircle className="w-5 h-5 text-accent" />
-                      <span>Recommended Actions</span>
+                      <span>Security Protection Steps</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground mb-6">
-                      Start by changing passwords and enabling MFA. Check off each item as you complete it.
+                      Follow these essential steps to protect yourself from future data breaches and secure your accounts.
                     </p>
 
                     <div className="space-y-3">
@@ -320,12 +322,6 @@ const BreachChecker: React.FC = () => {
                         </div>
                       ))}
                     </div>
-
-                    <div className="mt-6 pt-6 border-t border-border">
-                      <Button variant="hero" size="lg" className="w-full">
-                        Set Up Ongoing Monitoring
-                      </Button>
-                    </div>
                   </CardContent>
                 </Card>
               </>
@@ -341,17 +337,18 @@ const BreachChecker: React.FC = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground mb-4">
-                      We didn't find this email in the breach datasets we monitor.
+                      Great news! We didn't find this email in the breach datasets we monitor.
                     </p>
-                    <div className="bg-warning/10 border border-warning/20 rounded-lg p-4 mb-6">
-                      <p className="text-sm text-warning-foreground">
-                        <strong>Important:</strong> This doesn't guarantee zero risk. 
-                        New breaches appear regularly, and some may not be in our current datasets.
-                      </p>
+                    <div className="bg-accent/10 border border-accent/20 rounded-lg p-4">
+                      <h4 className="font-semibold text-foreground mb-2">Stay Protected:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1">
+                        <li>• Use unique, strong passwords for each account</li>
+                        <li>• Enable two-factor authentication where available</li>
+                        <li>• Be cautious of phishing emails and suspicious links</li>
+                        <li>• Keep your software and devices updated</li>
+                        <li>• Regularly review your account activity</li>
+                      </ul>
                     </div>
-                    <Button variant="cta" size="lg" className="w-full">
-                      Enable Monitoring & Alerts
-                    </Button>
                   </CardContent>
                 </Card>
               </>
