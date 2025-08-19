@@ -149,10 +149,24 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div>
               <h3 className="font-semibold text-foreground mb-4">Contact</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/contact" className="hover:text-foreground transition-smooth">Contact Us</Link></li>
                 <li>
-                  <a href="mailto:support@databreached.com" className="hover:text-foreground transition-smooth">
-                    support@databreached.com
+                  <a 
+                    href="https://t.me/databreachedorg" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-smooth flex items-center gap-2"
+                  >
+                    📱 Contact on Telegram
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://t.me/databreachedorg" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-smooth"
+                  >
+                    @databreachedorg
                   </a>
                 </li>
               </ul>

@@ -142,6 +142,11 @@ const Pricing = () => {
                     variant={plan.variant} 
                     size="lg" 
                     className="w-full"
+                    onClick={() => {
+                      if (plan.name !== 'Free') {
+                        window.open('https://t.me/databreachedorg', '_blank');
+                      }
+                    }}
                   >
                     {plan.cta}
                   </Button>
@@ -208,8 +213,9 @@ const Pricing = () => {
               variant="outline" 
               size="xl"
               className="border-white/20 text-white hover:bg-white/10"
+              onClick={() => window.open('https://t.me/databreachedorg', '_blank')}
             >
-              Contact Sales
+              Contact on Telegram
             </Button>
           </div>
         </div>
