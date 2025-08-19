@@ -287,7 +287,10 @@ const Pricing = () => {
                 <span className="text-2xl font-bold text-white">Free 7-Day Trial</span>
               </div>
               <p className="text-white/90 mb-6 text-sm">
-                Platform runs in "Remote Access" mode for 7 days. After trial, enter license key to continue.
+                The platform operates in "Remote Access" mode during your trial, meaning it runs locally on your device 
+                but connects to our secure servers to receive real-time breach alerts and malware definitions. 
+                This ensures you get full protection while we verify the software is working correctly on your system. 
+                After 7 days, simply enter your license key to unlock full offline capabilities and enhanced privacy modes.
               </p>
               
               <Button 
