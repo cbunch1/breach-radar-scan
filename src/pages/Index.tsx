@@ -413,11 +413,13 @@ const Index = () => {
               </p>
               <div className="bg-white/80 border-l-4 border-primary p-6 rounded-r-lg">
                 <p className="text-foreground font-medium italic">
-                  "Finally, I can sleep peacefully knowing my data is protected. 
-                  DataBreached gives me the confidence to live my digital life without fear."
+                  "I was a victim of identity theft twice before finding DataBreached. 
+                  Scammers had used my stolen data to open credit accounts and make purchases. 
+                  Since using their service, I haven't had a single incident. The real-time alerts 
+                  and PC protection have kept me completely safe from fraudsters."
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  — Verified DataBreached Customer
+                  — Susan Yexley, Washington
                 </p>
               </div>
             </div>
