@@ -140,9 +140,8 @@ const Index = () => {
   ];
 
   const trustSignals = [
-    "Enterprise-grade security",
-    "GDPR/CCPA compliant",
-    "No passwords stored"
+    "We never store data",
+    "Email used only to return results"
   ];
 
   return (
