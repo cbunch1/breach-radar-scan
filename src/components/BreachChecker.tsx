@@ -99,7 +99,7 @@ const BreachChecker: React.FC = () => {
         
         toast({
           title: "Scan complete",
-          description: `Checked ${email} against Have I Been Pwned database.`,
+          description: `Checked ${email} against DataBreached database.`,
         });
       }
     } catch (error) {
@@ -150,8 +150,7 @@ const BreachChecker: React.FC = () => {
               <div className="text-sm text-muted-foreground">
                 <p className="font-medium text-foreground mb-1">Your privacy matters</p>
                 <p>
-                  We never store passwords. Email used only to return results. 
-                  Powered by Have I Been Pwned API. <strong>GDPR/CCPA-friendly.</strong>
+                  We never store data. Email used only to return results.
                 </p>
               </div>
             </div>
@@ -203,7 +202,7 @@ const BreachChecker: React.FC = () => {
               <div className="text-center py-8">
                 <Loader2 className="w-8 h-8 animate-spin mx-auto text-primary mb-4" />
                 <p className="text-muted-foreground">
-                  Checking Have I Been Pwned database...
+                  Checking DataBreached database...
                 </p>
               </div>
             </CardContent>
@@ -215,7 +214,7 @@ const BreachChecker: React.FC = () => {
           <div className="space-y-6">
             {isUsingMockData && (
               <Badge variant="demo" className="mb-4">
-                Demo Mode - Using sample data (Have I Been Pwned API integration available)
+                Demo Mode - Using sample data (DataBreached integration available)
               </Badge>
             )}
 
