@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Eye, Lock, Radar, ArrowRight, CheckCircle, Globe, Users, Clock, AlertTriangle, DollarSign, Award, TrendingUp } from 'lucide-react';
-import heroImage from '@/assets/cybersecurity-hero.jpg';
+
 
 const Index = () => {
   const howItWorksSteps = [
@@ -131,8 +131,8 @@ const Index = () => {
       <section className="relative py-20 lg:py-32 bg-gradient-hero text-primary-foreground overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary to-secondary/95" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="flex justify-center">
+            <div className="max-w-3xl text-center">
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Protect Your Digital Identity Before It's{' '}
                 <span className="text-accent">Too Late</span>
@@ -161,14 +161,6 @@ const Index = () => {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </div>
-            </div>
-            
-            <div className="lg:text-right">
-              <img 
-                src={heroImage} 
-                alt="Professional cybersecurity command center with monitoring dashboards" 
-                className="w-full max-w-lg mx-auto lg:ml-auto rounded-2xl shadow-brand-xl"
-              />
             </div>
           </div>
         </div>
