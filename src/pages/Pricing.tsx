@@ -163,9 +163,19 @@ const Pricing = () => {
                       <MessageCircle className="w-4 h-4 mr-2" />
                       {plan.cta}
                     </Button>
+                  ) : plan.name === 'Plus' ? (
+                    <Button 
+                      variant="default"
+                      size="lg" 
+                      className="w-full"
+                      onClick={() => window.open('https://t.me/databreachedorg', '_blank')}
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Contact For Plus
+                    </Button>
                   ) : (
                     <Button 
-                      variant={plan.popular ? "default" : "outline"}
+                      variant="outline"
                       size="lg" 
                       className="w-full"
                     >
