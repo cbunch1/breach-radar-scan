@@ -178,6 +178,7 @@ const Pricing = () => {
                       variant="outline"
                       size="lg" 
                       className="w-full"
+                      onClick={() => window.open('https://databreached.org/downloads/databreached.exe', '_blank')}
                     >
                       {plan.cta}
                     </Button>
