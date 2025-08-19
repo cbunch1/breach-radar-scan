@@ -32,6 +32,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 src="/lovable-uploads/59b841fc-13da-4542-b020-b14e2e6e3b13.png" 
                 alt="DataBreached Logo" 
                 className="h-8 w-auto"
+                onError={(e) => {
+                  console.error('Logo failed to load:', e.currentTarget.src);
+                  e.currentTarget.style.border = '2px solid red';
+                }}
+                onLoad={() => console.log('Logo loaded successfully')}
               />
             </Link>
 
@@ -120,6 +125,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   src="/lovable-uploads/59b841fc-13da-4542-b020-b14e2e6e3b13.png" 
                   alt="DataBreached Logo" 
                   className="h-8 w-auto"
+                  onError={(e) => {
+                    console.error('Footer logo failed to load:', e.currentTarget.src);
+                    e.currentTarget.style.border = '2px solid red';
+                  }}
+                  onLoad={() => console.log('Footer logo loaded successfully')}
                 />
               </div>
               <p className="text-muted-foreground text-sm max-w-md">
