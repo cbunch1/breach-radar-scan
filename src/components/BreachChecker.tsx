@@ -5,6 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, AlertTriangle, CheckCircle, Loader2, Eye, Lock, Radar } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 interface BreachResult {
   email: string;
@@ -28,19 +30,20 @@ const BreachChecker: React.FC = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<BreachResult | null>(null);
+  const [isUsingMockData, setIsUsingMockData] = useState(false);
   const [checklist, setChecklist] = useState<ChecklistItem[]>([
     { id: 'passwords', title: 'Change passwords for affected accounts', completed: false },
     { id: 'mfa', title: 'Enable two-factor authentication', completed: false },
     { id: 'forwarding', title: 'Check email forwarding rules', completed: false },
     { id: 'monitoring', title: 'Set up ongoing monitoring', completed: false },
   ]);
+  const { toast } = useToast();
 
-  // Mock data generator based on email hash
+  // Mock data generator for fallback
   const generateMockResult = (email: string): BreachResult => {
     const hash = btoa(email).slice(0, 8);
     const hashNum = parseInt(hash.replace(/[^0-9]/g, '').slice(0, 4) || '0');
     
-    // Deterministic mock - some emails will show breaches, others won't
     if (hashNum % 3 === 0) {
       return {
         email,
@@ -51,7 +54,7 @@ const BreachChecker: React.FC = () => {
     }
 
     const mockBreaches = [
-      { name: 'ExampleCorp 2023', date: '2023-11-02', types: ['email', 'hashed_password'], notes: 'Use unique password + MFA' },
+      { name: 'ExampleCorp 2023', date: '2023-11-02', types: ['email', 'hashed_password'], notes: 'Change password + enable MFA' },
       { name: 'AppHub 2024', date: '2024-06-18', types: ['email', 'username'], notes: 'Beware targeted phishing' },
       { name: 'ShopList 2022', date: '2022-04-10', types: ['email', 'phone'], notes: 'Update SMS recovery' },
       { name: 'TechService 2023', date: '2023-03-15', types: ['email', 'profile_data'], notes: 'Monitor for identity theft' },
@@ -68,16 +71,64 @@ const BreachChecker: React.FC = () => {
   };
 
   const handleCheck = async () => {
-    if (!email || !email.includes('@')) return;
+    if (!email || !email.includes('@')) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
     
     setLoading(true);
+    setResult(null);
+    setIsUsingMockData(false);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    const mockResult = generateMockResult(email);
-    setResult(mockResult);
-    setLoading(false);
+    try {
+      // Try to use the Supabase Edge Function for real Have I Been Pwned data
+      const { data, error } = await supabase.functions.invoke('check-breach', {
+        body: { email }
+      });
+
+      if (error) {
+        console.warn('Supabase function error, falling back to mock data:', error);
+        // Fall back to mock data if the function fails
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate delay
+        const mockResult = generateMockResult(email);
+        setResult(mockResult);
+        setIsUsingMockData(true);
+        
+        toast({
+          title: "Scan complete (Demo Mode)",
+          description: "Using demo data. Real API integration available.",
+          variant: "default",
+        });
+      } else {
+        setResult(data);
+        setIsUsingMockData(false);
+        
+        toast({
+          title: "Scan complete",
+          description: `Checked ${email} against Have I Been Pwned database.`,
+        });
+      }
+    } catch (error) {
+      console.error('Error checking breaches:', error);
+      
+      // Fall back to mock data on any error
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      const mockResult = generateMockResult(email);
+      setResult(mockResult);
+      setIsUsingMockData(true);
+      
+      toast({
+        title: "Scan complete (Demo Mode)",
+        description: "Using demo data. Check console for API details.",
+        variant: "default",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const toggleChecklistItem = (id: string) => {
@@ -110,7 +161,7 @@ const BreachChecker: React.FC = () => {
                 <p className="font-medium text-foreground mb-1">Your privacy matters</p>
                 <p>
                   We never store passwords. Email used only to return results. 
-                  Optional opt-in for alerts. <strong>GDPR/CCPA-friendly.</strong>
+                  Powered by Have I Been Pwned API. <strong>GDPR/CCPA-friendly.</strong>
                 </p>
               </div>
             </div>
@@ -129,6 +180,7 @@ const BreachChecker: React.FC = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className="text-base"
                   disabled={loading}
+                  onKeyPress={(e) => e.key === 'Enter' && handleCheck()}
                 />
               </div>
               <Button
@@ -161,7 +213,7 @@ const BreachChecker: React.FC = () => {
               <div className="text-center py-8">
                 <Loader2 className="w-8 h-8 animate-spin mx-auto text-primary mb-4" />
                 <p className="text-muted-foreground">
-                  Checking public breach datasets...
+                  Checking Have I Been Pwned database...
                 </p>
               </div>
             </CardContent>
@@ -171,9 +223,11 @@ const BreachChecker: React.FC = () => {
         {/* Results */}
         {result && !loading && (
           <div className="space-y-6">
-            <Badge variant="demo" className="mb-4">
-              Demo Data - Using sample breach data for demonstration
-            </Badge>
+            {isUsingMockData && (
+              <Badge variant="demo" className="mb-4">
+                Demo Mode - Using sample data (Have I Been Pwned API integration available)
+              </Badge>
+            )}
 
             {result.found ? (
               <>
@@ -261,7 +315,7 @@ const BreachChecker: React.FC = () => {
                             )}
                           >
                             {item.completed && (
-                              <CheckCircle className="w-3 h-3 text-white fill-current" />
+                              <CheckCircle className="w-3 h-3 text-accent-foreground fill-current" />
                             )}
                           </div>
                           <span

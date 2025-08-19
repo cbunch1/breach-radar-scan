@@ -188,12 +188,12 @@ const Pricing = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-accent text-white">
+      <section className="py-20 bg-gradient-accent text-accent-foreground">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
             Start Protecting Your Accounts Today
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-accent-foreground/90">
             Join thousands of users who trust DataBreached to monitor their exposure.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

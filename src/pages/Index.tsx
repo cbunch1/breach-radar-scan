@@ -65,7 +65,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-hero text-white overflow-hidden">
+      <section className="relative py-20 lg:py-32 bg-gradient-hero text-primary-foreground overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary to-secondary/90" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -74,14 +74,14 @@ const Index = () => {
                 Check if your email appears in a recent{' '}
                 <span className="text-accent">data breach</span>
               </h1>
-              <p className="text-xl mb-8 text-white/90 leading-relaxed">
+              <p className="text-xl mb-8 text-primary-foreground/90 leading-relaxed">
                 Instant exposure check, clear next steps, ongoing monitoring.
               </p>
               
               {/* Trust Row */}
               <div className="flex flex-wrap gap-4 mb-8">
                 {trustSignals.map((signal, index) => (
-                  <Badge key={index} variant="outline" className="border-white/20 text-white bg-white/10">
+                  <Badge key={index} variant="outline" className="border-primary-foreground/20 text-primary-foreground bg-primary-foreground/10">
                     {signal}
                   </Badge>
                 ))}
@@ -96,7 +96,7 @@ const Index = () => {
                   Check Exposure
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button variant="outline" size="xl" className="border-white/20 text-white hover:bg-white/10">
+                <Button variant="outline" size="xl" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
                   Learn More
                 </Button>
               </div>
@@ -219,12 +219,12 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-accent text-white">
+      <section className="py-20 bg-gradient-accent text-accent-foreground">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
             Ready to Check Your Exposure?
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-accent-foreground/90">
             Start with a free check. Decide later if monitoring is right for you.
           </p>
           <Button 
