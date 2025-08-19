@@ -56,8 +56,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* CTA Button */}
             <div className="hidden md:flex items-center space-x-4">
-              <Button variant="cta" size="default">
-                Check Exposure
+              <Button asChild variant="cta" size="default">
+                <Link to="/pricing">Download DataBreached</Link>
               </Button>
             </div>
 
@@ -97,8 +97,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </Link>
                 ))}
                 <div className="pt-2">
-                  <Button variant="cta" size="default" className="w-full">
-                    Check Exposure
+                  <Button asChild variant="cta" size="default" className="w-full">
+                    <Link to="/pricing">Download DataBreached</Link>
                   </Button>
                 </div>
               </nav>
