@@ -386,6 +386,45 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Customer Success Story */}
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <img 
+                src="/lovable-uploads/7182f784-606c-4c93-b7b5-1476a4102fe5.png" 
+                alt="Happy DataBreached customers wearing branded t-shirts, smiling confidently"
+                className="w-full rounded-2xl shadow-brand-lg"
+              />
+            </div>
+            <div>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
+                How DataBreached Changes Lives
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                Our customers don't just get breach monitoring—they get complete peace of mind. 
+                No more sleepless nights wondering if their data is safe. No more panic when 
+                hearing about the latest cyber attack on the news.
+              </p>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                With DataBreached protecting them, our customers walk away stress-free, 
+                knowing their digital lives are secure and monitored 24/7 by cybersecurity 
+                professionals who truly care about their safety.
+              </p>
+              <div className="bg-white/80 border-l-4 border-primary p-6 rounded-r-lg">
+                <p className="text-foreground font-medium italic">
+                  "Finally, I can sleep peacefully knowing my data is protected. 
+                  DataBreached gives me the confidence to live my digital life without fear."
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  — Verified DataBreached Customer
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Telegram Security Explanation */}
       <section className="py-16 bg-primary/5 border-y border-primary/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
